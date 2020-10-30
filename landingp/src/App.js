@@ -80,30 +80,6 @@ const IMAGES = [
   { id: 15, title: "Barn" }
 ];
 
-// function Thumbnail({ color }) {
-//   return (
-//     <div
-//       style={{
-//         width: 50,
-//         height: 50,
-//         background: color
-//       }}
-//     />
-//   );
-// }
-
-// function Image({ color }) {
-//   return (
-//     <div
-//       style={{
-//         width: "100%",
-//         height: 400,
-//         background: color
-//       }}
-//     />
-//   );
-// }
-
 function Home() {
   return (
     <div>
