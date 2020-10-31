@@ -4,13 +4,14 @@ import {
   Switch,
   Route,
   Link,
-  useHistory,
   useLocation,
   useParams
 } from "react-router-dom";
 
 import styled, {css} from 'styled-components';
 import UserGrid from './Profile/UserGrid';
+import {Modal} from './Modal/Modal';
+import Posts from './Posts';
 
 
 // This example shows how to render two different screens
@@ -57,7 +58,7 @@ function ModalSwitch() {
 }
 
 // created style component
-const Image = styled.div`
+export const Image = styled.div`
   width: 305px;
   height: 305px;
   background: no-repeat center/150% url(/img/${({index}) => index}.png);
@@ -68,23 +69,23 @@ const Image = styled.div`
   `}
 `
 
-const IMAGES = [
-  { id: 1, title: "Blueberry" },
-  { id: 2, title: "House" },
-  { id: 3, title: "Girl"},
-  { id: 4, title: "Bull" },
-  { id: 5, title: "Palm"},
-  { id: 6, title: "Cat"},
-  { id: 7, title: "Camera" },
-  { id: 8, title: "Compass" },
-  { id: 9, title: "Fire" },
-  { id: 10, title: "Wave" }  ,
-  { id: 11, title: "Coffee" },
-  { id: 12, title: "Stick Man" },
-  { id: 13, title: "Mountain" },
-  { id: 14, title: "Succulent" },
-  { id: 15, title: "Barn" }
-];
+// const IMAGES = [
+//   { id: 1, title: "Blueberry" },
+//   { id: 2, title: "House" },
+//   { id: 3, title: "Girl"},
+//   { id: 4, title: "Bull" },
+//   { id: 5, title: "Palm"},
+//   { id: 6, title: "Cat"},
+//   { id: 7, title: "Camera" },
+//   { id: 8, title: "Compass" },
+//   { id: 9, title: "Fire" },
+//   { id: 10, title: "Wave" }  ,
+//   { id: 11, title: "Coffee" },
+//   { id: 12, title: "Stick Man" },
+//   { id: 13, title: "Mountain" },
+//   { id: 14, title: "Succulent" },
+//   { id: 15, title: "Barn" }
+// ];
 
 function Home() {
   return (
@@ -117,7 +118,7 @@ function Gallery() {
     <div>
       <UserGrid/>
       <PhotoGrid>
-        {IMAGES.map(i => (
+        {Posts.map(i => (
           <Link
             key={i.id}
             to={{
@@ -137,7 +138,7 @@ function Gallery() {
 
 function ImageView() {
   let { id } = useParams();
-  let image = IMAGES[parseInt(id, 10) - 1];
+  let image = Posts[parseInt(id, 10) - 1];
 
   if (!image) return <div>Image not found</div>;
 
@@ -149,48 +150,48 @@ function ImageView() {
   );
 }
 
-function Modal() {
-  let history = useHistory();
-  let { id } = useParams();
-  let image = IMAGES[parseInt(id, 10) - 1];
+// function Modal() {
+//   let history = useHistory();
+//   let { id } = useParams();
+//   let image = IMAGES[parseInt(id, 10) - 1];
 
-  if (!image) return null;
+//   if (!image) return null;
 
-  let back = e => {
-    e.stopPropagation();
-    history.goBack();
-  };
+//   let back = e => {
+//     e.stopPropagation();
+//     history.goBack();
+//   };
 
-  return (
-    <div
-      onClick={back}
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-        background: "rgba(0, 0, 0, 0.15)"
-      }}
-    >
-      <div
-        className="modal"
-        style={{
-          position: "absolute",
-          background: "#fff",
-          top: 25,
-          left: "10%",
-          right: "10%",
-          padding: 15,
-          border: "2px solid #444"
-        }}
-      >
-        <h1>{image.title}</h1>
-        <Image inModal index={image.id} />
-        <button type="button" onClick={back}>
-          Close
-        </button>
-      </div>
-    </div>
-  );
-}
+//   return (
+//     <div
+//       onClick={back}
+//       style={{
+//         position: "absolute",
+//         top: 0,
+//         left: 0,
+//         bottom: 0,
+//         right: 0,
+//         background: "rgba(0, 0, 0, 0.15)"
+//       }}
+//     >
+//       <div
+//         className="modal"
+//         style={{
+//           position: "absolute",
+//           background: "#fff",
+//           top: 25,
+//           left: "10%",
+//           right: "10%",
+//           padding: 15,
+//           border: "2px solid #444"
+//         }}
+//       >
+//         <h1>{image.title}</h1>
+//         <Image inModal index={image.id} />
+//         <button type="button" onClick={back}>
+//           Close
+//         </button>
+//       </div>
+//     </div>
+//   );
+// }
