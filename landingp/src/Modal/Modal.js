@@ -6,6 +6,7 @@ import {
   useParams
 } from "react-router-dom";
 import styled, {createGlobalStyle} from 'styled-components';
+import {PostGrid, InfoGrid} from  './PostGrid';
 
 const OverFlowHidden = createGlobalStyle `
   body {
@@ -17,8 +18,8 @@ const ModalStyled = styled.div`
   position: absolute;
   background: #fff;
   top: ${({top}) => top}px;
-  left: 10%;
-  right: 10%;
+  left: 20%;
+  right: 20%;
   padding: 15px;
   border: 2px solid #444;
 `
@@ -50,11 +51,14 @@ export function Modal() {
     >
       <ModalStyled top={window.scrollY + (window.innerHeight/2) - 250}>
         <OverFlowHidden/>
-        <h1>{image.title}</h1>
-        <Image inModal index={image.id} />
-        <button type="button" onClick={back}>
-          Close
-        </button>
+        <PostGrid>
+          <Image inModal index={image.id} />
+          <InfoGrid>
+            <h1>{image.title}</h1>
+            <div>comments</div>
+            <div>50 Likes</div>
+          </InfoGrid>
+        </PostGrid>
       </ModalStyled>
     </div>
   );
