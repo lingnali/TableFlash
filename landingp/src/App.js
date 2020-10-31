@@ -12,6 +12,7 @@ import styled, {css} from 'styled-components';
 import UserGrid from './Profile/UserGrid';
 import {Modal} from './Modal/Modal';
 import Posts from './Posts';
+import {Gallery} from "./Gallery/Gallery";
 
 
 // This example shows how to render two different screens
@@ -111,30 +112,30 @@ const PhotoGrid = styled.div`
   gap: 20px;
 `
 
-function Gallery() {
-  let location = useLocation();
+// function Gallery() {
+//   let location = useLocation();
 
-  return (
-    <div>
-      <UserGrid/>
-      <PhotoGrid>
-        {Posts.map(i => (
-          <Link
-            key={i.id}
-            to={{
-              pathname: `/img/${i.id}`,
-              // This is the trick! This link sets
-              // the `background` in location state.
-              state: { background: location }
-            }}
-          >
-            <Image index={i.id} />
-          </Link>
-        ))}
-      </PhotoGrid>
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       <UserGrid/>
+//       <PhotoGrid>
+//         {Posts.map(i => (
+//           <Link
+//             key={i.id}
+//             to={{
+//               pathname: `/img/${i.id}`,
+//               // This is the trick! This link sets
+//               // the `background` in location state.
+//               state: { background: location }
+//             }}
+//           >
+//             <Image index={i.id} />
+//           </Link>
+//         ))}
+//       </PhotoGrid>
+//     </div>
+//   );
+// }
 
 function ImageView() {
   let { id } = useParams();
@@ -149,49 +150,3 @@ function ImageView() {
     </div>
   );
 }
-
-// function Modal() {
-//   let history = useHistory();
-//   let { id } = useParams();
-//   let image = IMAGES[parseInt(id, 10) - 1];
-
-//   if (!image) return null;
-
-//   let back = e => {
-//     e.stopPropagation();
-//     history.goBack();
-//   };
-
-//   return (
-//     <div
-//       onClick={back}
-//       style={{
-//         position: "absolute",
-//         top: 0,
-//         left: 0,
-//         bottom: 0,
-//         right: 0,
-//         background: "rgba(0, 0, 0, 0.15)"
-//       }}
-//     >
-//       <div
-//         className="modal"
-//         style={{
-//           position: "absolute",
-//           background: "#fff",
-//           top: 25,
-//           left: "10%",
-//           right: "10%",
-//           padding: 15,
-//           border: "2px solid #444"
-//         }}
-//       >
-//         <h1>{image.title}</h1>
-//         <Image inModal index={image.id} />
-//         <button type="button" onClick={back}>
-//           Close
-//         </button>
-//       </div>
-//     </div>
-//   );
-// }
