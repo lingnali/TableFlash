@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import styled, {createGlobalStyle} from 'styled-components';
 import {PostGrid, InfoGrid} from  './PostGrid';
+import {MiniUserGrid} from "../Profile/UserGrid";
+import {ProfileImage} from "../Profile/ProfileImage";
 
 const OverFlowHidden = createGlobalStyle `
   body {
@@ -20,7 +22,6 @@ const ModalStyled = styled.div`
   top: ${({top}) => top}px;
   left: 20%;
   right: 20%;
-  padding: 15px;
   border: 2px solid #444;
 `
 
@@ -54,7 +55,14 @@ export function Modal() {
         <PostGrid>
           <Image inModal index={image.id} />
           <InfoGrid>
-            <h1>{image.title}</h1>
+            <MiniUserGrid>
+              <ProfileImage mini/>
+              <h3> TableFlash </h3>
+            </MiniUserGrid>
+            <div>
+              <h2>{image.title}</h2>
+            </div>
+            
             <div>comments</div>
             <div>50 Likes</div>
           </InfoGrid>
