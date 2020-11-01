@@ -13,3 +13,4 @@ export const InfoGrid = styled.div`
   display: grid; 
   grid-template-rows: 60px auto 40px;  
 `
+ 

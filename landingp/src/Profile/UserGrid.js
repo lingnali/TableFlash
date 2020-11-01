@@ -46,7 +46,7 @@ const Label = styled.div`
 
 const Description = styled.div`
   grid-area: description; 
-  max-width: 400px; 
+  max-width: 300px; 
   @media (max-width: 990px) {
     padding-left: 25px; 
     grid-column: 1 / 3; 

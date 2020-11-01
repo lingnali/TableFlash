@@ -42,12 +42,14 @@ const TabLink = styled(Link)`
   ${({selected}) => selected && 'color: black;'}
 `
 
+
 const ImageLink = styled(Link)`
   background: no-repeat center/150% url(/img/${({index}) => index}.png);
   :hover {
-    opacity: 0.7; 
+      opacity: 0.7; 
   }
   ${({cascade}) => cascade && css`
+    
     background-size: cover;
     &:nth-of-type(2n) {
       grid-row-start: span 2;
@@ -85,6 +87,7 @@ export function Gallery() {
                 state: { background: location }
               }}
             >
+
             </ImageLink>
           ))}
         </PhotoGrid>

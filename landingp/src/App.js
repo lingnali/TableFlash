@@ -47,7 +47,7 @@ function ModalSwitch() {
   return (
     <div>
       <Switch location={background || location}>
-        <Route exact path="/" children={<Home />} />
+        <Route exact path="/" children={<Gallery />} />
         <Route path="/gallery" children={<Gallery />} />
         <Route path="/img/:id" children={<Modal />} />
       </Switch>
