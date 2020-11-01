@@ -1,14 +1,13 @@
 
 import React from 'react';
 import {
-    useLocation,
+    useLocation, useParams,
 } from "react-router-dom";
 
 import UserGrid from '../Profile/UserGrid';
 import {Link} from 'react-router-dom';
 import styled, {css} from 'styled-components';
 import Posts from "../Posts";
-import {Image} from '../App';
 
 const PhotoGrid = styled.div`
   display: grid; 
@@ -43,25 +42,41 @@ const TabLink = styled(Link)`
   ${({selected}) => selected && 'color: black;'}
 `
 
+const ImageLink = styled(Link)`
+  background: no-repeat center/150% url(/img/${({index}) => index}.png);
+  :hover {
+    opacity: 0.7; 
+  }
+  ${({cascade}) => cascade && css`
+    background-size: cover;
+    &:nth-of-type(2n) {
+      grid-row-start: span 2;
+    }
+  `}
+`
+
 //to={{pathname: `${match.url}`, search:"?type=cascade"}}
 export function Gallery() {
     let location = useLocation();
+    const cascade = location.search === '?type=cascade';
   
     return (
       <div>
         <UserGrid/>
         <LinkGrid>
-            <TabLink to={'/gallery'}>
+            <TabLink selected={!cascade} to={'/gallery'}>
                 POSTS
             </TabLink>
-            <TabLink to={{pathname: '/gallery', search:"?type=cascade"}}> 
+            <TabLink selected={cascade} to={{pathname: '/gallery', search:"?type=cascade"}}> 
                 TAGGED
             </TabLink>
         </LinkGrid>
-        <PhotoGrid>
+        <PhotoGrid cascade={cascade}>
           {Posts.map(i => (
-            <Link
+            <ImageLink
+              cascade={cascade}
               key={i.id}
+              index={i.id}
               to={{
                 pathname: `/img/${i.id}`,
                 // This is the trick! This link sets
@@ -69,8 +84,7 @@ export function Gallery() {
                 state: { background: location }
               }}
             >
-              <Image index={i.id} />
-            </Link>
+            </ImageLink>
           ))}
         </PhotoGrid>
       </div>
