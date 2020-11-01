@@ -5,16 +5,21 @@ export const ProfileImage = styled.div`
     background: no-repeat center/170% url(/img/profile.jpg);
     border-radius: 100px;
     margin: 40px;
-    ${({mini}) => mini && css`
-    width: 50px; 
-    height: 50px; 
-    margin: 5px; 
     @media (max-width: 990px) {
-      width: 50px; 
-      height: 50px; 
-      margin: 5px; 
-    }
-  `}
+        margin: 20px; 
+        width: 120px; 
+        height: 120px; 
+      }
+      ${({mini}) => mini && css`
+        width: 50px; 
+        height: 50px; 
+        margin: 5px; 
+        @media (max-width: 990px) {
+          width: 50px; 
+          height: 50px; 
+          margin: 5px; 
+        }
+      `}
 
 
 

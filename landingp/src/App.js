@@ -49,7 +49,7 @@ function ModalSwitch() {
       <Switch location={background || location}>
         <Route exact path="/" children={<Home />} />
         <Route path="/gallery" children={<Gallery />} />
-        <Route path="/img/:id" children={<ImageView />} />
+        <Route path="/img/:id" children={<Modal />} />
       </Switch>
 
       {/* Show the modal when a background page is set */}
@@ -62,6 +62,9 @@ function ModalSwitch() {
 export const Image = styled.div`
   width: 305px;
   height: 305px;
+  @media(max-width:990px){
+    width: 100%;
+  }
   background: no-repeat center/150% url(/img/${({index}) => index}.png);
   ${({inModal}) => !inModal && css`
     :hover {
@@ -137,16 +140,16 @@ const PhotoGrid = styled.div`
 //   );
 // }
 
-function ImageView() {
-  let { id } = useParams();
-  let image = Posts[parseInt(id, 10) - 1];
+// function ImageView() {
+//   let { id } = useParams();
+//   let image = Posts[parseInt(id, 10) - 1];
 
-  if (!image) return <div>Image not found</div>;
+//   if (!image) return <div>Image not found</div>;
 
-  return (
-    <div>
-      <h1>{image.title}</h1>
-      <Image index={image.id} />
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       <h1>{image.title}</h1>
+//       <Image index={image.id} />
+//     </div>
+//   );
+// }

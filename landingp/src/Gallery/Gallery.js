@@ -73,6 +73,7 @@ export function Gallery() {
         </LinkGrid>
         <PhotoGrid cascade={cascade}>
           {Posts.map(i => (
+            //TODO: update tagged pic for the cascade layout 
             <ImageLink
               cascade={cascade}
               key={i.id}

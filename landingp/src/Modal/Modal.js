@@ -20,9 +20,16 @@ const ModalStyled = styled.div`
   position: absolute;
   background: #fff;
   top: ${({top}) => top}px;
-  left: 20%;
-  right: 20%;
+  left: 30%;
+  right: 30%;
+  width: 600px; 
   border: 2px solid #444;
+  @media(max-width: 990px){
+    left: 0; 
+    right: 0; 
+    top: ${({top}) => top}px; 
+    width: auto; 
+  }
 `
 
 export function Modal() {
