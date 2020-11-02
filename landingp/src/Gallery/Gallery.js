@@ -1,7 +1,7 @@
 
 import React from 'react';
 import {
-    useLocation, useParams,
+    useLocation,
 } from "react-router-dom";
 
 import UserGrid from '../Profile/UserGrid';

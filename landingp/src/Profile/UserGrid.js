@@ -54,7 +54,7 @@ const Description = styled.div`
 `
 
 
-export default function(){
+export default function foo(){
     return <UserGridStyled>
         <Photo><ProfileImage/></Photo>
         <Name>TableFlash</Name>

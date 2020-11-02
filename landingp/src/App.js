@@ -3,15 +3,11 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useLocation,
-  useParams
+  useLocation
 } from "react-router-dom";
 
 import styled, {css} from 'styled-components';
-import UserGrid from './Profile/UserGrid';
 import {Modal} from './Modal/Modal';
-import Posts from './Posts';
 import {Gallery} from "./Gallery/Gallery";
 
 
@@ -72,84 +68,3 @@ export const Image = styled.div`
     }
   `}
 `
-
-// const IMAGES = [
-//   { id: 1, title: "Blueberry" },
-//   { id: 2, title: "House" },
-//   { id: 3, title: "Girl"},
-//   { id: 4, title: "Bull" },
-//   { id: 5, title: "Palm"},
-//   { id: 6, title: "Cat"},
-//   { id: 7, title: "Camera" },
-//   { id: 8, title: "Compass" },
-//   { id: 9, title: "Fire" },
-//   { id: 10, title: "Wave" }  ,
-//   { id: 11, title: "Coffee" },
-//   { id: 12, title: "Stick Man" },
-//   { id: 13, title: "Mountain" },
-//   { id: 14, title: "Succulent" },
-//   { id: 15, title: "Barn" }
-// ];
-
-function Home() {
-  return (
-    <div>
-      <Link to="/gallery">Visit the Gallery</Link>
-      <h2>Featured Images</h2>
-      <ul>
-        <li>
-          <Link to="/img/2">Tomato</Link>
-        </li>
-        <li>
-          <Link to="/img/4">Crimson</Link>
-        </li>
-      </ul>
-    </div>
-  );
-}
-
-const PhotoGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 305px);
-  justify-content: center;
-  gap: 20px;
-`
-
-// function Gallery() {
-//   let location = useLocation();
-
-//   return (
-//     <div>
-//       <UserGrid/>
-//       <PhotoGrid>
-//         {Posts.map(i => (
-//           <Link
-//             key={i.id}
-//             to={{
-//               pathname: `/img/${i.id}`,
-//               // This is the trick! This link sets
-//               // the `background` in location state.
-//               state: { background: location }
-//             }}
-//           >
-//             <Image index={i.id} />
-//           </Link>
-//         ))}
-//       </PhotoGrid>
-//     </div>
-//   );
-// }
-
-// function ImageView() {
-//   let { id } = useParams();
-//   let image = Posts[parseInt(id, 10) - 1];
-
-//   if (!image) return <div>Image not found</div>;
-
-//   return (
-//     <div>
-//       <h1>{image.title}</h1>
-//       <Image index={image.id} />
-//     </div>
-//   );
-// }
